@@ -1,0 +1,22 @@
+/*
+ *
+ * MMM-HomeAssistant-OnOff
+ *
+ */
+.homeAssistantButton {
+    width: 50px;
+    height: 50px;
+    background-color: gold;
+    border: 1px;
+    text-align: center;
+}
+
+.entityON {
+    background-color: golg
+    border: none;
+}
+
+.entitiyOFF {
+    background-color: none;
+    border: 2px;
+}

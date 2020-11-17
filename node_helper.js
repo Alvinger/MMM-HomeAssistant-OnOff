@@ -1,6 +1,6 @@
 var NodeHelper = require("node_helper");
 
-// add require of other javascripot components here
+// add require of other javascriot components here
 // var xxx = require('yyy') here
 
 module.exports = NodeHelper.create({

@@ -1,23 +1,25 @@
 /*
 
-sample module structure
+MMM-HomeAssistant-OnOff
 
+Magic Mirror module for turning Home Assistant entities on or off
+and showing status
 
  */
 
 
-Module.register("SampleModule", {
-	// define variables used by module, but not in config data
-	some_variable:  true,
-	some_other_variable: "a string",
+Module.register("MMM-HomeAssistant-OnOff", {
+	// Global variables
 
 	// holder for config info from module_name.js
-	config:null,
+	// config:null,
 
-	// anything here in defaults will be added to the config data
-	// and replaced if the same thing is provided in config
+	// Module parameters
+	//   accessToken	long-lived token from Home Assistant
+	//   entities	list of entities from Home Assistant
 	defaults: {
-		message: "default message if none supplied in config.js"
+		accessToken: ""
+		entities: []
 	},
 
 	init: function(){
@@ -47,7 +49,7 @@ Module.register("SampleModule", {
 
 	// return list of stylesheet files to use if any
 	getStyles: function() {
-		return 	[
+		return [
 			// sample of list of files to specify here, if no files, do not use this routine, , or return empty list
 
 			//'script.css', // will try to load it from the vendor folder, otherwise it will load is from the module folder.
@@ -71,7 +73,7 @@ Module.register("SampleModule", {
 
 	// only called if the module header was configured in module config in config.js
 	getHeader: function() {
-		return this.data.header + " Foo Bar";
+		return this.data.header;
 	},
 
 	// messages received from other modules and the system (NOT from your node helper)
@@ -93,7 +95,7 @@ Module.register("SampleModule", {
 	// payload is a notification dependent data structure, up to you to design between module and node_helper
 	socketNotificationReceived: function(notification, payload) {
 		Log.log(this.name + " received a socket notification: " + notification + " - Payload: " + payload);
-		if(notification === "message_from_helper"){
+		if(notification === "ENTITIES"){
 			this.config.message = payload;
 			// tell mirror runtime that our data has changed,
 			// we will be called back at GetDom() to provide the updated content

@@ -6,7 +6,7 @@ var NodeHelper = require("node_helper");
 module.exports = NodeHelper.create({
 
 	init(){
-		console.log("init module helper SampleModule");
+		console.log("init module helper " +this.name);
 	},
 
 	start() {
@@ -28,7 +28,9 @@ module.exports = NodeHelper.create({
 			// wait 15 seconds, send a message back to module
 			setTimeout(()=> { this.sendSocketNotification("message_from_helper"," this is a test_message")}, 15000)
 		}
-		else if(notification === "????2") {
+		else if(notification === "TURN_ON") {
+		}
+		else if(notification === "TURN_OFF") {
 		}
 
 	},
